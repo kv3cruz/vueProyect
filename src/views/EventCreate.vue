@@ -10,7 +10,7 @@
     </ul>
     <p>EVENT {{ getEventById(3)}}</p>
     -->
-     <form>
+     <form @submit.prevent="createEvent">
           <label>Select a category</label>
           <select v-model="event.category">
             <option v-for="cat in categories" :key="cat">{{ cat }}</option>
@@ -52,9 +52,50 @@ export default {
   components: {
     Datepicker
   },
+  data() {
+    const times = []
+    for (let i = 1; i <= 24; i++) {
+      times.push(i + ':00')
+    }
+    return {
+      times,
+      event: this.createFreshEventObject()
+    }
+  },
   computed: {
     ...mapGetters(['getEventById']),
     ...mapState(['user', 'categories'])
+  },
+  methods: {
+    createEvent() {
+      this.$store
+        .dispatch('createEvent', this.event)
+        .then(() => {
+          this.$router.push({
+            name: 'event-show',
+            params: { id: this.event.id }
+          })
+          this.event = this.createFreshEventObject()
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    createFreshEventObject() {
+      const user = this.user
+      const id = Math.floor(Math.random() * 1000)
+      return {
+        id: id,
+        category: '',
+        organizer: user,
+        title: '',
+        description: '',
+        location: '',
+        date: '',
+        time: '',
+        attendees: []
+      }
+    }
   }
 }
 </script>
