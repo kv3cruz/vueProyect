@@ -99,6 +99,120 @@
       "date": "2021-07-02T17:19:00.000Z",
       "time": "18:00",
       "attendees": []
+    },
+    {
+      "id": 12,
+      "title": "Beach Cleanup",
+      "date": "Aug 28 2018",
+      "time": "10:00",
+      "location": "Daytona Beach",
+      "description": "Let's clean up this beach.",
+      "organizer": "Adam Jahr",
+      "category": "sustainability",
+      "attendees": [
+        {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        },
+        {
+          "id": "def456",
+          "name": "Gregg Pollack"
+        },
+        {
+          "id": "ghi789",
+          "name": "Beth Swanson"
+        },
+        {
+          "id": "jkl101",
+          "name": "Mary Gordon"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Park Cleanup",
+      "date": "Nov 12 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "We're going to clean up this park.",
+      "organizer": "Adam Jahr",
+      "category": "nature",
+      "attendees": [
+        {
+          "id": "ghi789",
+          "name": "Beth Swanson"
+        },
+        {
+          "id": "jkl101",
+          "name": "Mary Gordon"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "title": "Pet Adoption Day",
+      "date": "Dec 2 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "Help animals find new homes.",
+      "organizer": "Gregg Pollack",
+      "category": "animal welfare",
+      "attendees": [
+        {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        },
+        {
+          "id": "ghi789",
+          "name": "Beth Swanson"
+        },
+        {
+          "id": "jkl101",
+          "name": "Mary Gordon"
+        }
+      ]
+    },
+    {
+      "id": 51675332,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "a",
+      "description": "a",
+      "location": "a",
+      "date": "2021-07-03T17:10:00.000Z",
+      "time": "16:00",
+      "attendees": []
+    },
+    {
+      "id": 1712,
+      "category": "food",
+      "title": "e",
+      "description": "e",
+      "location": "e",
+      "date": "2021-07-02T17:19:00.000Z",
+      "time": "18:00",
+      "attendees": []
+    },
+    {
+      "id": 679,
+      "category": "sustainability",
+      "organizer": {
+        "id": "1010",
+        "name": "kevin"
+      },
+      "title": "t",
+      "description": "t",
+      "location": "t",
+      "date": "2021-07-01T23:02:00.000Z",
+      "time": "18:00",
+      "attendees": []
     }
   ]
 }

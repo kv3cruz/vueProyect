@@ -10,6 +10,7 @@
     </ul>
     <p>EVENT {{ getEventById(3)}}</p>
     -->
+      <p>{{user.user.name}}</p>
      <form @submit.prevent="createEvent">
           <label>Select a category</label>
           <select v-model="event.category">
@@ -62,6 +63,7 @@ export default {
       event: this.createFreshEventObject()
     }
   },
+  created() {},
   computed: {
     ...mapGetters(['getEventById']),
     ...mapState(['user', 'categories'])
@@ -82,7 +84,9 @@ export default {
         })
     },
     createFreshEventObject() {
-      const user = this.user
+      //let me = this
+      //const user = me.user != undefined ? me.user.user : ''
+      const user = this.$store.state.user.user
       const id = Math.floor(Math.random() * 1000)
       return {
         id: id,
