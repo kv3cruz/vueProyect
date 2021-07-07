@@ -213,6 +213,20 @@
       "date": "2021-07-01T23:02:00.000Z",
       "time": "18:00",
       "attendees": []
+    },
+    {
+      "id": 364,
+      "category": "sustainability",
+      "organizer": {
+        "id": "1010",
+        "name": "kevin"
+      },
+      "title": "vic",
+      "description": "vic",
+      "location": "heart",
+      "date": "2021-07-15T16:34:00.000Z",
+      "time": "10:00",
+      "attendees": []
     }
   ]
 }

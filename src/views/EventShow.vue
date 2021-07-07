@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="event-header">
+      <p>{{user.name}}</p>
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
       <h5>Organized by {{ event.organizer ? event.organizer.name : '' }}</h5>
@@ -22,18 +23,41 @@
         <b>{{ attendee.name }}</b>
       </li>
     </ul>
+    <div>
+      <input type="text" v-model="userNew">
+      <button @click="actualizarUsuario" class="block">enviar</button>
+    </div>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   props: ['id'],
   created() {
-    this.$store.dispatch('fetchEvent', this.id)
+    this.fetchEvent(this.id)
+  },
+  data() {
+    return {
+      userNew: ''
+    }
   },
   computed: {
-    ...mapState(['event'])
+    ...mapState({
+      event: state => state.event.event,
+      user: state => state.user.user
+    })
+  },
+  methods: {
+    ...mapActions('event', ['fetchEvent']),
+    ...mapActions('user', ['updateUser']),
+    actualizarUsuario() {
+      let usr = {
+        name: this.userNew,
+        id: '1010'
+      }
+      this.updateUser(usr)
+    }
   }
 }
 </script>
@@ -55,5 +79,16 @@ export default {
 .list-group > .list-item {
   padding: 1em 0;
   border-bottom: solid 1px #e5e5e5;
+}
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
 }
 </style>
