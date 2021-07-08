@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="event-header">
-      <p>{{user.name}}</p>
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
       <h5>Organized by {{ event.organizer ? event.organizer.name : '' }}</h5>
@@ -23,40 +22,14 @@
         <b>{{ attendee.name }}</b>
       </li>
     </ul>
-    <div>
-      <input type="text" v-model="userNew">
-      <button @click="actualizarUsuario" class="block">enviar</button>
-    </div>
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
-
 export default {
-  props: ['id'],
-  created() {
-    this.fetchEvent(this.id)
-  },
-  data() {
-    return {
-      userNew: ''
-    }
-  },
-  computed: {
-    ...mapState({
-      event: state => state.event.event,
-      user: state => state.user.user
-    })
-  },
-  methods: {
-    ...mapActions('event', ['fetchEvent']),
-    ...mapActions('user', ['updateUser']),
-    actualizarUsuario() {
-      let usr = {
-        name: this.userNew,
-        id: '1010'
-      }
-      this.updateUser(usr)
+  props: {
+    event: {
+      type: Object,
+      require: true
     }
   }
 }

@@ -63,8 +63,9 @@ export const actions = {
     let event = getters.getEventById(id)
     if (event) {
       commit('SET_EVENT', event)
+      return event
     } else {
-      EventService.getEvent(id)
+      return EventService.getEvent(id)
         .then(response => {
           commit('SET_EVENT', response.data)
           const notification = {
@@ -72,6 +73,7 @@ export const actions = {
             message: 'Your event has been fetched!'
           }
           dispatch('notification/add', notification, { root: true })
+          return response.data
         })
         .catch(error => {
           const notification = {
