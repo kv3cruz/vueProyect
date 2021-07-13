@@ -255,6 +255,20 @@
       "date": "2021-07-08T21:44:00.000Z",
       "time": "17:00",
       "attendees": []
+    },
+    {
+      "id": 41,
+      "category": "",
+      "organizer": {
+        "id": "1010",
+        "name": "kevin"
+      },
+      "title": "",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
     }
   ]
 }

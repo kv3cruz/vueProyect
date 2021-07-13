@@ -21,16 +21,49 @@ const router = new Router({
       component: EventShow,
       props: true,
       beforeEnter(routeTo, routeFrom, next) {
-        store.dispatch('event/fetchEvent', routeTo.params.id).then(event => {
-          routeTo.params.event = event
-          next()
-        })
+        store
+          .dispatch('event/fetchEvent', routeTo.params.id)
+          .then(event => {
+            routeTo.params.event = event
+            next()
+          })
+          .catch(error => {
+            if (error.response && error.response.status == 404) {
+              next({ name: 'notFound', params: { resource: 'event' } })
+            } else {
+              next({ name: 'networkIssue' })
+            }
+          })
       }
     },
     {
       path: '/event/create',
       name: 'event-create',
       component: EventCreate
+    },
+    {
+      path: '/notFound',
+      name: 'notFound',
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "Not Found" */ './views/NotFound'),
+      meta: {
+        title: 'App - Not Found'
+      }
+    },
+    {
+      path: '/networkIssue',
+      name: 'networkIssue',
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "Network Issue" */ './views/NetworkIssue'),
+      meta: {
+        title: 'App - Network Issue'
+      }
+    },
+    {
+      path: '*',
+      redirect: { name: 'notFound', params: { resource: 'page' } }
     }
   ]
 })
