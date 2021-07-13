@@ -62,6 +62,16 @@ const router = new Router({
       }
     },
     {
+      path: '/example',
+      name: 'example',
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "Example" */ './views/Example'),
+      meta: {
+        title: 'App - Example'
+      }
+    },
+    {
       path: '*',
       redirect: { name: 'notFound', params: { resource: 'page' } }
     }
